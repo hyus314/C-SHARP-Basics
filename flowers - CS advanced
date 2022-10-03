@@ -1,0 +1,59 @@
+using System;
+
+namespace flowers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int hrizantema = int.Parse(Console.ReadLine());
+            int roses = int.Parse(Console.ReadLine());
+            int laleta = int.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            string holiday = Console.ReadLine();
+            double flowerPrice = 0;
+
+            switch(season)
+            {
+                case "Spring":
+                case "Summer":
+                    flowerPrice = hrizantema * 2.00 + roses * 4.10 + laleta * 2.50;
+                    break;
+                case "Autumn":
+                case "Winter":
+                    flowerPrice = hrizantema * 3.75 + roses * 4.50 + laleta * 4.15;
+                    break;
+            }
+
+            
+
+            if (holiday == "Y")
+            {
+                flowerPrice = flowerPrice + (flowerPrice * 0.15);
+            }
+
+            
+
+            if (season == "Spring" && laleta >= 7)
+            {
+                flowerPrice = flowerPrice - (flowerPrice * 0.05);
+            }
+
+            if(season == "Winter" && roses >= 10)
+            {
+                flowerPrice = flowerPrice - (flowerPrice * 0.10);
+            }
+
+            if(hrizantema + roses + laleta >= 20)
+            {
+                flowerPrice = flowerPrice - (flowerPrice * 0.20);
+            }
+
+           
+
+            flowerPrice = flowerPrice + 2;
+
+            Console.WriteLine($"{flowerPrice:f2}");
+        }
+    }
+}
