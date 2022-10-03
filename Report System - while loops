@@ -1,0 +1,80 @@
+using System;
+
+namespace reportSystem_extraWhile
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int neededMoney = int.Parse(Console.ReadLine());
+            int counter = 1;
+            string command = Console.ReadLine();
+            double creditCardSum = 0;
+            double cashSum = 0;
+            double collectedMoneySum = 0;
+            double creditCardCounter = 0;
+            double cashCounter = 0;
+
+            while (command != "End")
+            {
+                double collectedMoney = double.Parse(command);
+               
+                if (counter % 2 == 0)
+                {
+                    //credit
+                    if (collectedMoney <= 10)
+                    {
+                        Console.WriteLine("Error in transaction!");
+                        counter++;
+                        command = Console.ReadLine();
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Product sold!");
+                        collectedMoneySum += collectedMoney;
+                        creditCardSum += collectedMoney;
+                        cashCounter++;
+                    }
+                }
+                else
+                {
+                    //cash
+                    if (collectedMoney <= 100)
+                    {
+                        Console.WriteLine("Product sold!");
+                        collectedMoneySum += collectedMoney;
+
+                        cashSum += collectedMoney;
+                        creditCardCounter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error in transaction!");
+                        counter++;
+                        command = Console.ReadLine();
+                        continue;
+                    }
+                }
+
+                double avgCash = cashSum / cashCounter;
+                double avgCredit = creditCardSum / creditCardCounter;
+
+                if (collectedMoneySum >= neededMoney)
+                {
+                    Console.WriteLine($"Average CS: {avgCash:f2}");
+                    Console.WriteLine($"Average CC: {avgCredit:f2}");
+                    break;
+                }
+
+                counter++;
+                command = Console.ReadLine();
+            }
+
+            if (collectedMoneySum < neededMoney)
+            {
+                Console.WriteLine("Failed to collect required money for charity.");
+            }
+        }
+    }
+}
