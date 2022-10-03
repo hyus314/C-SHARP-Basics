@@ -1,0 +1,72 @@
+using System;
+
+namespace truckDriver
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string season = Console.ReadLine();
+            double kmPerMonth = double.Parse(Console.ReadLine());
+            double moneyPerKm = 0;
+
+            if (kmPerMonth <= 5000)
+            {
+                switch (season)
+                {
+                    case "Spring":
+                    case "Autumn":
+                        moneyPerKm = (kmPerMonth * 0.75) * 4;
+                        break;
+                    case "Summer":
+                        moneyPerKm = (kmPerMonth * 0.9) * 4;
+                        break;
+                    case "Winter":
+                        moneyPerKm = (kmPerMonth * 1.05) * 4;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (kmPerMonth > 5000 && kmPerMonth <= 10000)
+            {
+                switch (season)
+                {
+                    case "Spring":
+                    case "Autumn":
+                        moneyPerKm = (kmPerMonth * 0.95) * 4;
+                        break;
+                    case "Summer":
+                        moneyPerKm = (kmPerMonth * 1.10) * 4;
+                        break;
+                    case "Winter":
+                        moneyPerKm = (kmPerMonth * 1.25) * 4;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (kmPerMonth > 10000 && kmPerMonth <= 20000)
+            {
+                switch (season)
+                {
+                    case "Spring":
+                    case "Autumn":
+                    case "Summer":
+                    case "Winter":
+                        moneyPerKm = (kmPerMonth * 1.45) * 4;
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+
+            moneyPerKm = moneyPerKm - (moneyPerKm * 0.1);
+
+            Console.WriteLine($"{moneyPerKm:f2}");
+        }
+    }
+}
