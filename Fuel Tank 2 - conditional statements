@@ -1,0 +1,69 @@
+using System;
+
+namespace fuelTank2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string fuelType = Console.ReadLine();
+            double litres = double.Parse(Console.ReadLine());
+            string clubcard = Console.ReadLine();
+            double gasPrice = 0;
+
+            switch(clubcard)
+            {
+                case "No":
+                    switch (fuelType)
+                    {
+                        case "Gasoline":
+                            gasPrice = 2.22;
+                            break;
+                        case "Diesel":
+                            gasPrice = 2.33;
+                            break;
+                        case "Gas":
+                            gasPrice = 0.93;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Yes":
+                    switch(fuelType)
+                    {
+                        case "Gasoline":
+                            gasPrice = 2.22 - 0.18;
+                            break;
+                        case "Diesel":
+                            gasPrice = 2.33 - 0.12;
+                            break;
+                        case "Gas":
+                            gasPrice = 0.93 - 0.08;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            double sum = litres * gasPrice;
+
+            if (litres > 20 && litres <= 25)
+            {
+                double sumDiscount = sum * 0.08;
+                sum = sum - sumDiscount;
+            }
+
+            if(litres > 25)
+            {
+                double sumDiscount = sum * 0.1;
+                sum = sum - sumDiscount;
+            }
+
+            Console.WriteLine($"{sum:f2} lv.");
+        }
+    }
+}
