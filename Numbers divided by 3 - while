@@ -1,0 +1,21 @@
+using System;
+
+namespace numsdivededby3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = 1;
+
+            while (n < 100)
+            {
+                if (n % 3 == 0)
+                {
+                    Console.WriteLine(n);
+                }
+                n++;
+            }
+        }
+    }
+}
