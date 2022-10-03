@@ -1,0 +1,71 @@
+using System;
+
+namespace carToGo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            string carType = "";
+            string clasS = "";
+
+            if (budget <= 100 )
+            {
+                switch (season)
+                {
+                    case "Summer":
+                        budget = budget * 0.35;
+                        carType = "Cabrio";
+                        clasS = "Economy class";
+                        break;
+                    case "Winter":
+                        budget = budget * 0.65;
+                        clasS = "Economy class";
+                        carType = "Jeep";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (budget >= 100 && budget <= 500 )
+            {
+                switch (season)
+                {
+                    case "Summer":
+                        budget = budget * 0.45;
+                        carType = "Cabrio";
+                        clasS = "Compact class";
+                        break;
+                    case "Winter":
+                        budget = budget * 0.80;
+                        clasS = "Compact class";
+                        carType = "Jeep";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (budget > 500)
+            {
+                switch (season)
+                {
+                    case "Summer":
+                    case "Winter":
+                        budget = budget * 0.90;
+                        clasS = "Luxury class";
+                        carType = "Jeep";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            Console.WriteLine(clasS);
+            Console.WriteLine($"{carType} - {budget:f2}");
+        }
+    }
+}
