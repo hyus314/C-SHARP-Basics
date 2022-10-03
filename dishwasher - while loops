@@ -1,0 +1,75 @@
+using System;
+
+namespace dishwasher_extraWhile
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double detergentBottles = int.Parse(Console.ReadLine());
+            detergentBottles *= 750;
+            string chiniiEnd = Console.ReadLine();
+            double chiniiSum = 0;
+            double chiniiCounter = 0;
+            int counter = 1;
+            double pansSum = 0;
+            double pansCounter = 0;
+            int chinii = 0;
+            int pans = 0;
+            bool flag = true;
+            
+
+
+            while (chiniiEnd != "End")
+            {
+                if (counter % 3 == 0)
+                {
+                    pans = int.Parse(chiniiEnd);
+                    pansSum = pans * 15;
+                    if (detergentBottles < pansSum)
+                    {
+                        double difference = Math.Abs(detergentBottles - pansSum);
+                        Console.WriteLine($"Not enough detergent, {difference} ml. more necessary!");
+                        flag = false;
+                        break;
+                    }
+                    
+                    pansCounter += pans;
+                   
+                    
+                    detergentBottles -= pansSum;
+                    counter++;
+                    chiniiEnd = Console.ReadLine();
+                    continue;
+                }
+                counter++;
+
+                chinii = int.Parse(chiniiEnd);
+                chiniiSum = chinii * 5;
+                if (detergentBottles < chiniiSum)
+                {
+                    double difference = Math.Abs(detergentBottles - chiniiSum);
+                    Console.WriteLine($"Not enough detergent, {difference} ml. more necessary!");
+                    flag = false;
+                    break;
+                }
+                
+                chiniiCounter += chinii;
+                
+                detergentBottles -= chiniiSum;
+                
+                chiniiEnd = Console.ReadLine();
+            }
+
+            if (flag)
+            {
+                Console.WriteLine("Detergent was enough!");
+                Console.WriteLine($"{chiniiCounter} dishes and {pansCounter} pots were washed.");
+                Console.WriteLine($"Leftover detergent {detergentBottles} ml.");
+            }
+
+            
+            
+        }
+    }
+}
