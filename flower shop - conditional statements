@@ -1,0 +1,36 @@
+using System;
+
+namespace flowershop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int magnolia = int.Parse(Console.ReadLine());
+            int zyumbul = int.Parse(Console.ReadLine());
+            int rose = int.Parse(Console.ReadLine());
+            int cactus = int.Parse(Console.ReadLine());
+
+            double present = double.Parse(Console.ReadLine());
+
+            double magnoliaPrice = magnolia * 3.25;
+            double zyumbulPrice = zyumbul * 4;
+            double rosePrice = rose * 3.50;
+            double cactusPrice = cactus * 8;
+
+            double sumFlower = magnoliaPrice + zyumbulPrice + rosePrice + cactusPrice;
+            
+            double sumFlowerTax = sumFlower - (sumFlower * 0.05);
+            
+
+            if (sumFlowerTax > present)
+            {
+                Console.WriteLine($"She is left with {Math.Floor(sumFlowerTax - present)} leva.");
+            }
+            else
+            {
+                Console.WriteLine($"She will have to borrow {Math.Ceiling(present - sumFlowerTax)} leva.");
+            }
+        }
+    }
+}
