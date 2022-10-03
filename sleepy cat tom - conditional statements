@@ -1,0 +1,40 @@
+using System;
+
+namespace sleepyCatTom_extraConditionals
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int days = int.Parse(Console.ReadLine());
+
+            int workDays = 365 - days;
+
+            int workDaysInMinForTom = workDays * 63;
+
+            int restDaysForTom = days * 127;
+
+            int totalPlayingMinutes = restDaysForTom + workDaysInMinForTom;
+
+            if (totalPlayingMinutes > 30000)
+            {
+                Console.WriteLine("Tom will run away");
+                int difference = Math.Abs(totalPlayingMinutes - 30000);
+                double hours = difference / 60;
+                double minutes = difference % 60;
+                Console.WriteLine($"{hours} hours and {minutes} minutes more for play");
+
+            }
+            else
+            {
+                Console.WriteLine("Tom sleeps well");
+                int difference = Math.Abs(totalPlayingMinutes - 30000);
+                double hours = difference / 60;
+                double minutes = difference % 60;
+                Console.WriteLine($"{hours} hours and {minutes} minutes less for play");
+            }
+
+
+        }
+    }
+}
