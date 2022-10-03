@@ -1,0 +1,31 @@
+using System;
+
+namespace pets_extraConditionals
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int daysCount = int.Parse(Console.ReadLine());
+            int food = int.Parse(Console.ReadLine());
+            double foodForDog = double.Parse(Console.ReadLine());
+            double foodforCat = double.Parse(Console.ReadLine());
+            double foodforTurtle = double.Parse(Console.ReadLine());
+
+            double neededfoodForDog = daysCount * foodForDog;
+            double neededfoodForCat = daysCount * foodforCat;
+            double neededfoodForTurtle = (daysCount * foodforTurtle) / 1000.0;
+
+            double sumFood = neededfoodForCat + neededfoodForDog + neededfoodForTurtle;
+
+            if (sumFood < food)
+            {
+                Console.WriteLine($"{Math.Floor(Math.Abs(sumFood - food))} kilos of food left.");
+            }
+            else
+            {
+                Console.WriteLine($"{Math.Ceiling(Math.Abs(sumFood - food))} more kilos of food are needed.");
+            }
+        }
+    }
+}
