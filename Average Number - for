@@ -1,0 +1,24 @@
+using System;
+
+namespace averagenumber
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double n = int.Parse(Console.ReadLine());
+            int counter = 0;
+            double number = 0;
+            double sum = 0;
+
+            for (int i = 0; i <n; i++)
+            {
+                number = double.Parse(Console.ReadLine());
+                sum += number;
+                counter++;
+            }
+
+            Console.WriteLine($"{sum / counter:f2}");
+        }
+    }
+}
