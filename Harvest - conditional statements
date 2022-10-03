@@ -1,0 +1,31 @@
+using System;
+
+namespace harest_extraConditionals
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int vineyard = int.Parse(Console.ReadLine());
+            double grapePerMeter = double.Parse(Console.ReadLine());
+            int needenWineLitres = int.Parse(Console.ReadLine());
+            int workers = int.Parse(Console.ReadLine());
+
+            double grapeSum = vineyard * grapePerMeter;
+            double wine = 0.4 * grapeSum / 2.5;
+
+            if(wine >= needenWineLitres)
+            {
+                double leftWine = Math.Abs(wine - needenWineLitres);
+                double winePerPerson = leftWine / workers;
+                Console.WriteLine($"Good harvest this year! Total wine: {Math.Floor(wine)} liters.");
+                Console.WriteLine($"{Math.Ceiling(leftWine)} liters left -> {Math.Ceiling(winePerPerson)} liters per person.");
+            }
+            else
+            {
+                double neededWine = Math.Abs(wine - needenWineLitres);
+                Console.WriteLine($"It will be a tough winter! More {Math.Floor(neededWine)} liters wine needed.");
+            }
+        }
+    }
+}
