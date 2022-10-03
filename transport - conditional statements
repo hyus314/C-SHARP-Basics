@@ -1,0 +1,51 @@
+using System;
+
+namespace transportPrice_extraConditionals
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int kilometres = int.Parse(Console.ReadLine());
+            string travelTime = Console.ReadLine();
+            double price = 0;
+            if (kilometres <= 20)
+            {
+                switch (travelTime)
+                {
+                    case "day":
+                        price = 0.70 + kilometres * 0.79;
+                        break;
+                    case "night":
+                        price = 0.70 + kilometres * 0.90;
+                        break;
+                }
+            }
+            else if (kilometres > 20 && kilometres < 100)
+            {
+                switch (travelTime)
+                {
+                    case "day":
+                        price =  kilometres * 0.09;
+                        break;
+                    case "night":
+                        price =  kilometres * 0.09;
+                        break;
+                }
+            }
+            else if (kilometres >= 100)
+            {
+                switch (travelTime)
+                {
+                    case "day":
+                        price = kilometres * 0.06;
+                        break;
+                    case "night":
+                        price = kilometres * 0.06;
+                        break;
+                }
+            }
+            Console.WriteLine($"{price:f2}");
+        }
+    }
+}
